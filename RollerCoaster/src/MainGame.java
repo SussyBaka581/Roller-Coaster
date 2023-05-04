@@ -8,8 +8,9 @@ public class MainGame {
         // create frame method
         private JFrame frame;
         private int testCount = 0;
-        private boolean buttonPress;
+        //private boolean buttonPress;
         private int hitCounter = 0;
+        private int randNum = 0;
 
         private void handleButton2(ActionEvent event) {
                 ethanHit();
@@ -111,15 +112,16 @@ public class MainGame {
                 frame.repaint();
 
                 ethanHit();
-
+                
         }
 
         private void ethanHit() {
                 if (hitCounter < 25) {
-                        int randNum = (int) (Math.random() * 5) + 1;
+                        randNum = (int) (Math.random() * 5) + 1;
                         System.out.println(randNum);
                         hitCounter++;
                 }
+                
         }
 
 }
