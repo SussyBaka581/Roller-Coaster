@@ -17,11 +17,13 @@ public class MainGameTest {
     private JButton hole4;
     private JButton hole5;
     private JButton hole6;
+    private JButton holeGarbage;
     private JLabel me;
     private ImageIcon icon;
 
     private void handleButton2(ActionEvent event) {
         ethanHit();
+        hole1.setIcon(null);
     }
 
     private void handleButton3(ActionEvent event) {
@@ -77,14 +79,14 @@ public class MainGameTest {
 
         hole2 = new JButton();
         hole2.addActionListener(event -> this.handleButton3(event));
-        hole2.setIcon(icon);
+        // hole2.setIcon(icon);
         hole2.setBorder(BorderFactory.createEmptyBorder());
         hole2.setBounds(750, 300, 200, 200);
         hole2.setBackground(Color.BLACK);
 
         hole3 = new JButton();
         hole3.addActionListener(event -> this.handleButton4(event));
-        hole3.setIcon(icon);
+        //hole3.setIcon(icon);
         hole3.setBorder(BorderFactory.createEmptyBorder());
         hole3.setBounds(1000, 300, 200, 200);
         hole3.setBackground(Color.BLACK);
@@ -110,6 +112,9 @@ public class MainGameTest {
         hole6.setBounds(1000, 550, 200, 200);
         hole6.setBackground(Color.BLACK);
 
+        holeGarbage = new JButton();
+        holeGarbage.setBounds(1200,550,200,200);
+
         me = new JLabel();
         me.setIcon(icon);
 
@@ -119,6 +124,8 @@ public class MainGameTest {
         frame.add(hole4);
         frame.add(hole5);
         frame.add(hole6);
+        frame.add(holeGarbage);
+        holeGarbage.setVisible(false);
 
         frame.repaint();
 
@@ -132,7 +139,8 @@ public class MainGameTest {
             System.out.println(randNum);
             hitCounter++;
             holeAppear1();
-            holeAppear1();
+            holeAppear2();
+            holeAppear3();
 
         }
 
@@ -141,10 +149,19 @@ public class MainGameTest {
     public void holeAppear1() {
         if (randNum == 1) {
             hole1.setIcon(icon);
-            hole1.setBorder(BorderFactory.createEmptyBorder());
-            hole1.setBounds(500, 300, 200, 200);
-            hole1.setBackground(Color.BLACK);
-            hole6.setVisible(false);
+            
+        }
+    }
+
+    public void holeAppear2() {
+        if (randNum == 2) {
+            hole2.setIcon(icon);
+        }
+    }
+
+    public void holeAppear3() {
+        if (randNum == 3) {
+            hole3.setIcon(icon);
         }
     }
 
