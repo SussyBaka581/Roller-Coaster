@@ -7,8 +7,6 @@ public class MainGameTest {
 
     // create frame method
     private JFrame frame;
-    private int testCount = 0;
-    // private boolean buttonPress;
     private int hitCounter = 0;
     private int randNum = 0;
     private JButton hole1;
@@ -20,30 +18,54 @@ public class MainGameTest {
     private JButton holeGarbage;
     private JLabel me;
     private ImageIcon icon;
+    private boolean gameStart = false;
 
     private void handleButton2(ActionEvent event) {
-        ethanHit();
-        hole1.setIcon(null);
+        if (gameStart == true && randNum == 1) {
+            hole1.setIcon(null);
+            sleepTimerTryCatch(500);
+            ethanHit();
+        }
     }
 
     private void handleButton3(ActionEvent event) {
-        ethanHit();
+        if (gameStart == true && randNum == 2) {
+            hole2.setIcon(null);
+            sleepTimerTryCatch(500);
+            ethanHit();
+        }
     }
 
     private void handleButton4(ActionEvent event) {
-        ethanHit();
+        if (gameStart == true && randNum == 3) {
+            hole3.setIcon(null);
+            sleepTimerTryCatch(500);
+            ethanHit();
+        }
     }
 
     private void handleButton5(ActionEvent event) {
-        ethanHit();
+        if (gameStart == true && randNum == 4) {
+            hole4.setIcon(null);
+            sleepTimerTryCatch(500);
+            ethanHit();
+        }
     }
 
     private void handleButton6(ActionEvent event) {
-        ethanHit();
+        if (gameStart == true && randNum == 5) {
+            hole5.setIcon(null);
+            sleepTimerTryCatch(500);
+            ethanHit();
+        }
     }
 
     private void handleButton7(ActionEvent event) {
-        ethanHit();
+        if (gameStart == true && randNum == 6) {
+            hole6.setIcon(null);
+            sleepTimerTryCatch(500);
+            ethanHit();
+        }
     }
 
     private void handleButton(ActionEvent event) { // closes program when close button is pressed
@@ -86,34 +108,34 @@ public class MainGameTest {
 
         hole3 = new JButton();
         hole3.addActionListener(event -> this.handleButton4(event));
-        //hole3.setIcon(icon);
+        // hole3.setIcon(icon);
         hole3.setBorder(BorderFactory.createEmptyBorder());
         hole3.setBounds(1000, 300, 200, 200);
         hole3.setBackground(Color.BLACK);
 
         hole4 = new JButton();
         hole4.addActionListener(event -> this.handleButton5(event));
-        hole4.setIcon(icon);
+        // hole4.setIcon(icon);
         hole4.setBorder(BorderFactory.createEmptyBorder());
         hole4.setBounds(500, 550, 200, 200);
         hole4.setBackground(Color.BLACK);
 
         hole5 = new JButton();
         hole5.addActionListener(event -> this.handleButton6(event));
-        hole5.setIcon(icon);
+        // hole5.setIcon(icon);
         hole5.setBorder(BorderFactory.createEmptyBorder());
         hole5.setBounds(750, 550, 200, 200);
         hole5.setBackground(Color.BLACK);
 
         hole6 = new JButton();
         hole6.addActionListener(event -> this.handleButton7(event));
-        hole6.setIcon(icon);
+        // hole6.setIcon(icon);
         hole6.setBorder(BorderFactory.createEmptyBorder());
         hole6.setBounds(1000, 550, 200, 200);
         hole6.setBackground(Color.BLACK);
 
         holeGarbage = new JButton();
-        holeGarbage.setBounds(1200,550,200,200);
+        holeGarbage.setBounds(1200, 550, 200, 200);
 
         me = new JLabel();
         me.setIcon(icon);
@@ -129,8 +151,11 @@ public class MainGameTest {
 
         frame.repaint();
 
+        sleepTimerTryCatch(3000);
+
         ethanHit();
 
+        gameStart = true;
     }
 
     private void ethanHit() {
@@ -141,6 +166,9 @@ public class MainGameTest {
             holeAppear1();
             holeAppear2();
             holeAppear3();
+            holeAppear4();
+            holeAppear5();
+            holeAppear6();
 
         }
 
@@ -149,7 +177,7 @@ public class MainGameTest {
     public void holeAppear1() {
         if (randNum == 1) {
             hole1.setIcon(icon);
-            
+
         }
     }
 
@@ -162,6 +190,32 @@ public class MainGameTest {
     public void holeAppear3() {
         if (randNum == 3) {
             hole3.setIcon(icon);
+        }
+    }
+
+    public void holeAppear4() {
+        if (randNum == 4) {
+            hole4.setIcon(icon);
+        }
+    }
+
+    public void holeAppear5() {
+        if (randNum == 5) {
+            hole5.setIcon(icon);
+        }
+    }
+
+    public void holeAppear6() {
+        if (randNum == 6) {
+            hole6.setIcon(icon);
+        }
+    }
+
+    public void sleepTimerTryCatch(int x) {
+        try {
+            Thread.sleep(x);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
