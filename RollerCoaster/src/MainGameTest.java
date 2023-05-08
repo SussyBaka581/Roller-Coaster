@@ -16,14 +16,19 @@ public class MainGameTest {
     private JButton hole5;
     private JButton hole6;
     private JButton holeGarbage;
-    private JLabel me;
     private ImageIcon icon;
     private boolean gameStart = false;
+    public JLabel scoreLabel;
+    public int scoreCount = 0;
+    public String getScore;
+    // private String scoreAsString;
 
     private void handleButton2(ActionEvent event) {
         if (gameStart == true && randNum == 1) {
             hole1.setIcon(null);
             sleepTimerTryCatch(500);
+            scoreCount++;
+            scoreLabel.setText(Integer.toString(scoreCount));
             ethanHit();
         }
     }
@@ -32,6 +37,8 @@ public class MainGameTest {
         if (gameStart == true && randNum == 2) {
             hole2.setIcon(null);
             sleepTimerTryCatch(500);
+            scoreCount++;
+            scoreLabel.setText(Integer.toString(scoreCount));
             ethanHit();
         }
     }
@@ -40,6 +47,8 @@ public class MainGameTest {
         if (gameStart == true && randNum == 3) {
             hole3.setIcon(null);
             sleepTimerTryCatch(500);
+            scoreCount++;
+            scoreLabel.setText(Integer.toString(scoreCount));
             ethanHit();
         }
     }
@@ -48,6 +57,8 @@ public class MainGameTest {
         if (gameStart == true && randNum == 4) {
             hole4.setIcon(null);
             sleepTimerTryCatch(500);
+            scoreCount++;
+            scoreLabel.setText(Integer.toString(scoreCount));
             ethanHit();
         }
     }
@@ -56,6 +67,8 @@ public class MainGameTest {
         if (gameStart == true && randNum == 5) {
             hole5.setIcon(null);
             sleepTimerTryCatch(500);
+            scoreCount++;
+            scoreLabel.setText(Integer.toString(scoreCount));
             ethanHit();
         }
     }
@@ -64,6 +77,8 @@ public class MainGameTest {
         if (gameStart == true && randNum == 6) {
             hole6.setIcon(null);
             sleepTimerTryCatch(500);
+            scoreCount++;
+            scoreLabel.setText(Integer.toString(scoreCount));
             ethanHit();
         }
     }
@@ -137,8 +152,11 @@ public class MainGameTest {
         holeGarbage = new JButton();
         holeGarbage.setBounds(1200, 550, 200, 200);
 
-        me = new JLabel();
-        me.setIcon(icon);
+        scoreLabel = new JLabel();
+        scoreLabel.setBounds(50, 70, 100, 50);
+        scoreLabel.setText(Integer.toString(scoreCount));
+        scoreLabel.setFont(new Font("Comic Sans", Font.PLAIN, 40));
+        frame.add(scoreLabel);
 
         frame.add(hole1);
         frame.add(hole2);
@@ -156,6 +174,7 @@ public class MainGameTest {
         ethanHit();
 
         gameStart = true;
+
     }
 
     private void ethanHit() {
@@ -169,7 +188,13 @@ public class MainGameTest {
             holeAppear4();
             holeAppear5();
             holeAppear6();
-
+        }
+        if(scoreCount >= 25){
+            getScore = scoreLabel.getText();
+            System.out.println(getScore);
+            gameStart = false;
+            EndScreen endOptions = new EndScreen();
+            frame.setVisible(false);
         }
 
     }
