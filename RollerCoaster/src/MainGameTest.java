@@ -6,7 +6,7 @@ import java.util.*;
 public class MainGameTest {
 
     // create frame method
-    private JFrame frame;
+    public JFrame frame;
     private int hitCounter = 0;
     private int randNum = 0;
     private JButton hole1;
@@ -94,6 +94,7 @@ public class MainGameTest {
         frame.setExtendedState(frame.MAXIMIZED_BOTH);
         frame.setUndecorated(true);
         frame.getContentPane().setBackground(Color.CYAN);
+        frame.setLayout(null);
         frame.setVisible(true);
 
         // creating and adding properties to close button
@@ -149,8 +150,8 @@ public class MainGameTest {
         hole6.setBounds(1000, 550, 200, 200);
         hole6.setBackground(Color.BLACK);
 
-        holeGarbage = new JButton();
-        holeGarbage.setBounds(1200, 550, 200, 200);
+        // holeGarbage = new JButton();
+        // holeGarbage.setBounds(1200, 550, 200, 200);
 
         scoreLabel = new JLabel();
         scoreLabel.setBounds(50, 70, 100, 50);
@@ -164,8 +165,8 @@ public class MainGameTest {
         frame.add(hole4);
         frame.add(hole5);
         frame.add(hole6);
-        frame.add(holeGarbage);
-        holeGarbage.setVisible(false);
+        //frame.add(holeGarbage);
+        // holeGarbage.setVisible(false);
 
         frame.repaint();
 
@@ -189,12 +190,9 @@ public class MainGameTest {
             holeAppear5();
             holeAppear6();
         }
-        if(scoreCount >= 25){
-            getScore = scoreLabel.getText();
-            System.out.println(getScore);
+        if(scoreCount >= 5){
             gameStart = false;
-            EndScreen endOptions = new EndScreen();
-            frame.setVisible(false);
+            EndScreen endOptions = new EndScreen(frame);
         }
 
     }
