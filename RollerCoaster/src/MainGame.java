@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class MainGameTest {
+public class MainGame {
 
     // create frame method
     public JFrame frame;
@@ -21,6 +21,8 @@ public class MainGameTest {
     public JLabel scoreLabel;
     public int scoreCount = 0;
     public String getScore;
+    public JLabel misses;
+    public int miss = 0;
     // private String scoreAsString;
 
     private void handleButton2(ActionEvent event) {
@@ -28,8 +30,11 @@ public class MainGameTest {
             hole1.setIcon(null);
             sleepTimerTryCatch(500);
             scoreCount++;
-            scoreLabel.setText(Integer.toString(scoreCount));
+            scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
             ethanHit();
+        } else {
+            miss++;
+            misses.setText("Misses: " + (Integer.toString(miss)));
         }
     }
 
@@ -38,8 +43,11 @@ public class MainGameTest {
             hole2.setIcon(null);
             sleepTimerTryCatch(500);
             scoreCount++;
-            scoreLabel.setText(Integer.toString(scoreCount));
+            scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
             ethanHit();
+        } else {
+            miss++;
+            misses.setText("Misses: " + (Integer.toString(miss)));
         }
     }
 
@@ -48,8 +56,11 @@ public class MainGameTest {
             hole3.setIcon(null);
             sleepTimerTryCatch(500);
             scoreCount++;
-            scoreLabel.setText(Integer.toString(scoreCount));
+            scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
             ethanHit();
+        } else {
+            miss++;
+            misses.setText("Misses: " + (Integer.toString(miss)));
         }
     }
 
@@ -58,8 +69,11 @@ public class MainGameTest {
             hole4.setIcon(null);
             sleepTimerTryCatch(500);
             scoreCount++;
-            scoreLabel.setText(Integer.toString(scoreCount));
+            scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
             ethanHit();
+        } else {
+            miss++;
+            misses.setText("Misses: " + (Integer.toString(miss)));
         }
     }
 
@@ -68,8 +82,11 @@ public class MainGameTest {
             hole5.setIcon(null);
             sleepTimerTryCatch(500);
             scoreCount++;
-            scoreLabel.setText(Integer.toString(scoreCount));
+            scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
             ethanHit();
+        } else {
+            miss++;
+            misses.setText("Misses: " + (Integer.toString(miss)));
         }
     }
 
@@ -78,8 +95,11 @@ public class MainGameTest {
             hole6.setIcon(null);
             sleepTimerTryCatch(500);
             scoreCount++;
-            scoreLabel.setText(Integer.toString(scoreCount));
+            scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
             ethanHit();
+        } else {
+            miss++;
+            misses.setText("Misses: " + (Integer.toString(miss)));
         }
     }
 
@@ -87,7 +107,7 @@ public class MainGameTest {
         System.exit(0);
     }
 
-    public MainGameTest() {
+    public MainGame() {
 
         // setting frame sizing parameters
         frame = new JFrame("Whack an Ethan");
@@ -154,10 +174,17 @@ public class MainGameTest {
         // holeGarbage.setBounds(1200, 550, 200, 200);
 
         scoreLabel = new JLabel();
-        scoreLabel.setBounds(50, 70, 100, 50);
-        scoreLabel.setText(Integer.toString(scoreCount));
+        scoreLabel.setBounds(50, 70, 300, 50);
+        scoreLabel.setText("Points: " + (Integer.toString(scoreCount)));
         scoreLabel.setFont(new Font("Comic Sans", Font.PLAIN, 40));
         frame.add(scoreLabel);
+
+        misses = new JLabel();
+        misses.setBounds(50, 150, 300, 50);
+        misses.setText("Misses: " + (Integer.toString(miss)));
+        misses.setFont(new Font("Comic Sans", Font.PLAIN, 40));
+        misses.setForeground(Color.RED);
+        frame.add(misses);
 
         frame.add(hole1);
         frame.add(hole2);
@@ -165,8 +192,6 @@ public class MainGameTest {
         frame.add(hole4);
         frame.add(hole5);
         frame.add(hole6);
-        //frame.add(holeGarbage);
-        // holeGarbage.setVisible(false);
 
         frame.repaint();
 
@@ -190,9 +215,9 @@ public class MainGameTest {
             holeAppear5();
             holeAppear6();
         }
-        if(scoreCount >= 5){
+        if (scoreCount >= 25) {
             gameStart = false;
-            EndScreen endOptions = new EndScreen(frame);
+            EndScreen endOptions = new EndScreen(frame, scoreCount, miss);
         }
 
     }

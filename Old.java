@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class MainGame {
+public class Old {
 
         // create frame method
         private JFrame frame;
@@ -43,7 +43,7 @@ public class MainGame {
                 System.exit(0);
         }
 
-        public MainGame() {
+        public Old() {
 
                 // setting frame sizing parameters
                 frame = new JFrame("Whack an Ethan");

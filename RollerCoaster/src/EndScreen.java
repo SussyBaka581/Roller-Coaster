@@ -7,7 +7,7 @@ public class EndScreen{
     private JFrame endFrame;
     private JLabel finalScore;
 
-    public EndScreen(JFrame sourceFrame){
+    public EndScreen(JFrame sourceFrame, int x, int y){
         sourceFrame.setVisible(false);
         
         endFrame = new JFrame();
@@ -34,7 +34,20 @@ public class EndScreen{
         exit.setBackground(Color.RED);
         endFrame.add(exit);
 
-        //TODO: fix scoreLabel so it actually displays the final score and not 0
+        JLabel finalScore = new JLabel();
+        finalScore.setBounds(50, 70, 600, 50);
+        finalScore.setText("Your final score was " + (Integer.toString(x)));
+        finalScore.setFont(new Font("Comic Sans", Font.PLAIN, 30));
+        endFrame.add(finalScore);
+
+        JLabel finalMiss = new JLabel();
+        finalMiss.setBounds(50, 150, 600, 50);
+        finalMiss.setText("You missed the Ethan " + (Integer.toString(y)) + " times");
+        finalMiss.setFont(new Font("Comic Sans", Font.PLAIN, 30));
+        finalMiss.setForeground(Color.RED);
+        endFrame.add(finalMiss);
+        
+
 
         //endFrame.add(scoreLabel);
 
@@ -45,7 +58,7 @@ public class EndScreen{
         
     }
     private void handleButton(ActionEvent event) {
-        MainGameTest game = new MainGameTest();
+        MainGame game = new MainGame();
             endFrame.setVisible(false);
 
     }
