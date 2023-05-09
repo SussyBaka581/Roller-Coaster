@@ -12,6 +12,8 @@ public class EndScreen{
         
         endFrame = new JFrame();
 
+        //creates end frame
+
         endFrame = new JFrame("FINISHED!");
         endFrame.setExtendedState(endFrame.MAXIMIZED_BOTH);
         endFrame.setUndecorated(true);
@@ -19,20 +21,22 @@ public class EndScreen{
         endFrame.setLayout(null);
         endFrame.setVisible(true);
 
-        // creating and adding properties to new game button
+        // creating and adding properties to new game button and exit button
         JButton game = new JButton("NEW GAME", null);
         game.addActionListener(event -> this.handleButton(event));
         game.setBorder(BorderFactory.createEmptyBorder());
-        game.setBounds(50, 850, 100, 50);
+        game.setBounds(50, 230, 100, 50);
         game.setBackground(Color.GREEN);
         endFrame.add(game);
 
         JButton exit = new JButton("CLOSE", null);
         exit.addActionListener(event -> this.handleButton2(event));
         exit.setBorder(BorderFactory.createEmptyBorder());
-        exit.setBounds(50, 930, 100, 50);
+        exit.setBounds(50, 300, 100, 50);
         exit.setBackground(Color.RED);
         endFrame.add(exit);
+
+        //pulls the final score and misses and puts them in a label
 
         JLabel finalScore = new JLabel();
         finalScore.setBounds(50, 70, 600, 50);
@@ -48,14 +52,7 @@ public class EndScreen{
         endFrame.add(finalMiss);
         
 
-
-        //endFrame.add(scoreLabel);
-
-        // JButton garb = new JButton();
-        // garb.setBounds(500, 930, 100, 50);
-        // endFrame.add(garb);
-        // garb.setVisible(false);
-        
+        //button actions
     }
     private void handleButton(ActionEvent event) {
         MainGame game = new MainGame();

@@ -8,6 +8,8 @@ public class StartScreen {
     private JFrame start;
 
     public StartScreen(){
+        //creates frame
+        
         start = new JFrame("Welcome");
         start.setSize(600, 400);
         start.getContentPane().setBackground(Color.CYAN);
@@ -15,11 +17,15 @@ public class StartScreen {
         start.setVisible(true);
         start.setResizable(false);
 
+        //title
+
         JLabel title = new JLabel();
         title.setText("Whack an Ethan!");
-        title.setFont(new Font("Black Ops One", Font.PLAIN, 40));
+        title.setFont(new Font("Comic Sans", Font.PLAIN, 40));
         title.setBounds(145, 50, 600, 50);
         start.add(title);
+
+        //buttons
 
         JButton game = new JButton("PLAY!", null);
         game.addActionListener(event -> this.handleButton(event));
@@ -35,6 +41,8 @@ public class StartScreen {
         exit.setBackground(Color.RED);
         start.add(exit);
     }
+
+    //button actions
 
     private void handleButton(ActionEvent event) {
         MainGame game = new MainGame();

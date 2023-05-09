@@ -15,7 +15,6 @@ public class MainGame {
     private JButton hole4;
     private JButton hole5;
     private JButton hole6;
-    private JButton holeGarbage;
     private ImageIcon icon;
     private boolean gameStart = false;
     public JLabel scoreLabel;
@@ -23,7 +22,8 @@ public class MainGame {
     public String getScore;
     public JLabel misses;
     public int miss = 0;
-    // private String scoreAsString;
+
+    //button actions
 
     private void handleButton2(ActionEvent event) {
         if (gameStart == true && randNum == 1) {
@@ -35,6 +35,7 @@ public class MainGame {
         } else {
             miss++;
             misses.setText("Misses: " + (Integer.toString(miss)));
+            checkForMisses();
         }
     }
 
@@ -48,6 +49,7 @@ public class MainGame {
         } else {
             miss++;
             misses.setText("Misses: " + (Integer.toString(miss)));
+            checkForMisses();
         }
     }
 
@@ -61,6 +63,7 @@ public class MainGame {
         } else {
             miss++;
             misses.setText("Misses: " + (Integer.toString(miss)));
+            checkForMisses();
         }
     }
 
@@ -74,6 +77,7 @@ public class MainGame {
         } else {
             miss++;
             misses.setText("Misses: " + (Integer.toString(miss)));
+            checkForMisses();
         }
     }
 
@@ -87,6 +91,7 @@ public class MainGame {
         } else {
             miss++;
             misses.setText("Misses: " + (Integer.toString(miss)));
+            checkForMisses();
         }
     }
 
@@ -100,6 +105,7 @@ public class MainGame {
         } else {
             miss++;
             misses.setText("Misses: " + (Integer.toString(miss)));
+            checkForMisses();
         }
     }
 
@@ -121,7 +127,7 @@ public class MainGame {
         JButton exit = new JButton("CLOSE", null);
         exit.addActionListener(event -> this.handleButton(event));
         exit.setBorder(BorderFactory.createEmptyBorder());
-        exit.setBounds(50, 930, 100, 50);
+        exit.setBounds(50, 300, 100, 50);
         exit.setBackground(Color.RED);
         frame.add(exit);
 
@@ -130,48 +136,41 @@ public class MainGame {
         // code for buttons 1-6
         hole1 = new JButton();
         hole1.addActionListener(event -> this.handleButton2(event));
-        // hole1.setIcon(icon);
         hole1.setBorder(BorderFactory.createEmptyBorder());
-        hole1.setBounds(500, 300, 200, 200);
+        hole1.setBounds(300, 250, 200, 200);
         hole1.setBackground(Color.BLACK);
 
         hole2 = new JButton();
         hole2.addActionListener(event -> this.handleButton3(event));
-        // hole2.setIcon(icon);
         hole2.setBorder(BorderFactory.createEmptyBorder());
-        hole2.setBounds(750, 300, 200, 200);
+        hole2.setBounds(550, 250, 200, 200);
         hole2.setBackground(Color.BLACK);
 
         hole3 = new JButton();
         hole3.addActionListener(event -> this.handleButton4(event));
-        // hole3.setIcon(icon);
         hole3.setBorder(BorderFactory.createEmptyBorder());
-        hole3.setBounds(1000, 300, 200, 200);
+        hole3.setBounds(800, 250, 200, 200);
         hole3.setBackground(Color.BLACK);
 
         hole4 = new JButton();
         hole4.addActionListener(event -> this.handleButton5(event));
-        // hole4.setIcon(icon);
         hole4.setBorder(BorderFactory.createEmptyBorder());
-        hole4.setBounds(500, 550, 200, 200);
+        hole4.setBounds(300, 500, 200, 200);
         hole4.setBackground(Color.BLACK);
 
         hole5 = new JButton();
         hole5.addActionListener(event -> this.handleButton6(event));
-        // hole5.setIcon(icon);
         hole5.setBorder(BorderFactory.createEmptyBorder());
-        hole5.setBounds(750, 550, 200, 200);
+        hole5.setBounds(550, 500, 200, 200);
         hole5.setBackground(Color.BLACK);
 
         hole6 = new JButton();
         hole6.addActionListener(event -> this.handleButton7(event));
-        // hole6.setIcon(icon);
         hole6.setBorder(BorderFactory.createEmptyBorder());
-        hole6.setBounds(1000, 550, 200, 200);
+        hole6.setBounds(800, 500, 200, 200);
         hole6.setBackground(Color.BLACK);
 
-        // holeGarbage = new JButton();
-        // holeGarbage.setBounds(1200, 550, 200, 200);
+        //label for score and misses
 
         scoreLabel = new JLabel();
         scoreLabel.setBounds(50, 70, 300, 50);
@@ -186,6 +185,8 @@ public class MainGame {
         misses.setForeground(Color.RED);
         frame.add(misses);
 
+        //adding all holes
+
         frame.add(hole1);
         frame.add(hole2);
         frame.add(hole3);
@@ -197,12 +198,18 @@ public class MainGame {
 
         sleepTimerTryCatch(3000);
 
+        //fist roll
+
         ethanHit();
+
+        //lets game run
 
         gameStart = true;
 
     }
 
+    //number generator
+    
     private void ethanHit() {
         if (hitCounter < 25) {
             randNum = (int) (Math.random() * 5) + 1;
@@ -222,6 +229,17 @@ public class MainGame {
 
     }
 
+    //checks to see if there has been 3 misses yet
+
+    private void checkForMisses() {
+        if (miss >= 3) {
+            gameStart = false;
+            EndScreen endOptions = new EndScreen(frame, scoreCount, miss);
+        }
+    }
+
+    //code for making Ethans pop up in holes
+    
     public void holeAppear1() {
         if (randNum == 1) {
             hole1.setIcon(icon);
@@ -259,6 +277,8 @@ public class MainGame {
         }
     }
 
+    //try catch for a thread sleep
+    
     public void sleepTimerTryCatch(int x) {
         try {
             Thread.sleep(x);
